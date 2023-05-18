@@ -2,19 +2,25 @@
 const localeSettings = {};
 dayjs.locale(localeSettings);
 
-$(function () {
+  $(function () {
+    const currentHour = dayjs().format('H');
 
-//Time and date
-  const currentHour = dayjs().format('H');
+    function hourlyColor() {
+      $('.time-block').each(function() {
+        const blockHour = parseInt(this.id);
+        $(this).toggleClass('past', blockHour < currentHour);
+        $(this).toggleClass('present', blockHour === currentHour);
+        $(this).toggleClass('future', blockHour > currentHour);
+      });
+    }
 
-//Slot color
-  function hourlyColor() {
-    $('.time-block').each(function() {
-      const blockHour = parseInt(this.id);
-      $(this).toggleClass('past', blockHour < currentHour);
-      $(this).toggleClass('present', blockHour === currentHour);
-      $(this).toggleClass('future', blockHour > currentHour);
-    });
+    function textEntry() {
+      $('.saveBtn').on('click', function() {
+        const key = $(this).parent().attr('id');
+        const value = $(this).siblings('.description').val();
+        localStorage.setItem(key, value);
+      });
+    }
 
   //Live time
     function updateTime() {
@@ -25,23 +31,30 @@ $(function () {
       dateElement.text(currentDate);
       timeElement.text(currentTime);
      }
-     
 
-    function refreshColor() {
-      $('.time-block').each(function() {
-        const blockHour = parseInt(this.id);
-        if (blockHour == currentHour) {
-          $(this).removeClass('past future').addClass('present');
-        } else if (blockHour < currentHour) {
-          $(this).removeClass('future present').addClass('past');
-        } else {
-          $(this).removeClass('past present').addClass('future');
-        }
-      });
+     $('.time-block').each(function() {
+      const key = $(this).attr('id');
+      const value = localStorage.getItem(key);
+      $(this).children('.description').val(value);
+    });
+
+      function refreshColor() {
+        $('.time-block').each(function() {
+          const blockHour = parseInt(this.id);
+          if (blockHour == currentHour) {
+            $(this).removeClass('past future').addClass('present');
+          } else if (blockHour < currentHour) {
+            $(this).removeClass('future present').addClass('past');
+          } else {
+            $(this).removeClass('past present').addClass('future');
+          }
+        });
+      }
+
 
   hourlyColor();
-  setInterval(updateTime, 1000);
   textEntry();
   refreshColor();
+  setInterval(updateTime, 1000);
 
 });
