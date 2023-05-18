@@ -1,16 +1,13 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+
 const localeSettings = {};
 dayjs.locale(localeSettings);
 
 $(function () {
-  // TODO: Add code to display the current date in the header of the page.
 
+//Time and date
   const currentHour = dayjs().format('H');
 
-
-
+//Slot color
   function hourlyColor() {
     $('.time-block').each(function() {
       const blockHour = parseInt(this.id);
@@ -19,6 +16,7 @@ $(function () {
       $(this).toggleClass('future', blockHour > currentHour);
     });
 
+  //Live time
     function updateTime() {
       const dateElement = $('#date');
       const timeElement = $('#time');
@@ -27,13 +25,23 @@ $(function () {
       dateElement.text(currentDate);
       timeElement.text(currentTime);
      }
+     
 
     function refreshColor() {
       $('.time-block').each(function() {
         const blockHour = parseInt(this.id);
-      }
+        if (blockHour == currentHour) {
+          $(this).removeClass('past future').addClass('present');
+        } else if (blockHour < currentHour) {
+          $(this).removeClass('future present').addClass('past');
+        } else {
+          $(this).removeClass('past present').addClass('future');
+        }
+      });
 
   hourlyColor();
   setInterval(updateTime, 1000);
+  textEntry();
+  refreshColor();
 
 });

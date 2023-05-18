@@ -4,8 +4,14 @@
 
 ## workday-scheduler-challenge5
 
+<br></br>
+
 ## Description
-This workday scheduler will allow customers to document upcoming daily events by the hour. It will be simple to keep track of appointments and tasks for those busy workdays using the color coded time slots. This site will show color coded time slots based on real time work hours. Customers will also be able to save their data 
+This workday scheduler will allow customers to document upcoming daily events by the hour. It will be simple to keep track of appointments and tasks for those busy workdays using the color coded time slots. This site will show color coded time slots based on real time work hours. Customers will also be able to save their data.
+
+## The Task
+
+Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
 
 
 ##  Features :
@@ -15,36 +21,46 @@ This workday scheduler will allow customers to document upcoming daily events by
 3) Color coded time changes.
 4) Customer can save data upon refreshing.
 
-# TECHNOLOGIES USED 
-
-## Development Tools 
+<br></br>
+## Development Tools:
 <br>
-<div align="center">
+<div align = "center">
 
-![Alt text](dev-tools.png)
-![Alt text](gh.png)
+![Alt text](images/dev-tools.png)
+
+![Alt text](images/jqimage.png)
+
+![Alt text](images/gh.png)
 
 </div>
 
 <br></br>
 
-# User Story
-- AS A coding boot camp student
-- I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-- SO THAT I can gauge my progress compared to my peers
+## User Story
 
-# Acceptance Criteria
-- GIVEN I am taking a coding quiz
-- WHEN I click the start button
-- THEN a timer starts and I am presented with a question
-- WHEN I answer a question
-- THEN I am presented with another question
-- WHEN I answer a question incorrectly
-- THEN time is subtracted from the clock
-- WHEN all questions are answered or the timer reaches 0
-- THEN the game is over
-- WHEN the game is over
-- THEN I can save my initials and score
+```md
+AS AN employee with a busy schedule
+I WANT to add important events to a daily planner
+SO THAT I can manage my time effectively
+```
+
+## Acceptance Criteria
+
+```md
+GIVEN I am using a daily planner to create a schedule
+WHEN I open the planner
+THEN the current day is displayed at the top of the calendar
+WHEN I scroll down
+THEN I am presented with timeblocks for standard business hours
+WHEN I view the timeblocks for that day
+THEN each timeblock is color coded to indicate whether it is in the past, present, or future
+WHEN I click into a timeblock
+THEN I can enter an event
+WHEN I click the save button for that timeblock
+THEN the text for that event is saved in local storage
+WHEN I refresh the page
+THEN the saved events persist
+```
 
 <br></br>
 
@@ -56,7 +72,9 @@ This workday scheduler will allow customers to document upcoming daily events by
 
 # Refrences
 
+- <a href="https://jquery.com/">JQuery</a>
 
+- <a href="https://www.w3schools.com">w3schools</a>
 
 **For more, reach me at laryn.n99@gmail.com**
 
